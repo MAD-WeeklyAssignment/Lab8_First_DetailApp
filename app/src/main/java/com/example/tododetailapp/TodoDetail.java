@@ -88,20 +88,6 @@ public class TodoDetail extends AppCompatActivity {
 
     }
 
-    private void setIsComplete(boolean isChecked) {
-
-        /* celebrate with a static Toast! */
-        if (isChecked) {
-            Toast.makeText(TodoDetail.this,
-                    "Hurray, it's done!", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(TodoDetail.this,
-                    "There is always tomorrow!", Toast.LENGTH_LONG).show();
-        }
-
-        Intent intent = new Intent();
-        intent.putExtra(IS_TODO_COMPLETE, isChecked);
-        setResult(RESULT_OK, intent);
-    }
+   
 
 }

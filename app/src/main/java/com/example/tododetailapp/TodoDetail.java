@@ -64,19 +64,7 @@ public class TodoDetail extends AppCompatActivity {
             mTodoIndex = savedInstanceState.getInt(TODO_INDEX, 0);
         }
 
-        /* TODO: refactor to a data layer */
-        Resources res = getResources();
-        todoDetails = res.getStringArray(R.array.todo_detail);
-
-        /* get the intent extra int for the todos index */
-        int mTodoIndex = getIntent().getIntExtra(TODO_INDEX, 0);
-        updateTextViewTodoDetail(mTodoIndex);
-
-        CheckBox checkboxIsComplete = (CheckBox) findViewById(R.id.checkBoxIsComplete);
-        /* Register the onClick listener with the generic implementation mTodoListener */
-        checkboxIsComplete.setOnClickListener(mTodoListener);
-
-    }
+       
 
     private void updateTextViewTodoDetail(int todoIndex) {
 
@@ -88,6 +76,20 @@ public class TodoDetail extends AppCompatActivity {
 
     }
 
-   
+    private void setIsComplete(boolean isChecked) {
+
+        /* celebrate with a static Toast! */
+        if (isChecked) {
+            Toast.makeText(TodoDetail.this,
+                    "Hurray, it's done!", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(TodoDetail.this,
+                    "There is always tomorrow!", Toast.LENGTH_LONG).show();
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(IS_TODO_COMPLETE, isChecked);
+        setResult(RESULT_OK, intent);
+    }
 
 }

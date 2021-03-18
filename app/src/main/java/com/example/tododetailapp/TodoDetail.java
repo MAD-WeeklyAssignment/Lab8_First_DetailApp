@@ -64,7 +64,19 @@ public class TodoDetail extends AppCompatActivity {
             mTodoIndex = savedInstanceState.getInt(TODO_INDEX, 0);
         }
 
-       
+        /* TODO: refactor to a data layer */
+        Resources res = getResources();
+        todoDetails = res.getStringArray(R.array.todo_detail);
+
+        /* get the intent extra int for the todos index */
+        int mTodoIndex = getIntent().getIntExtra(TODO_INDEX, 0);
+        updateTextViewTodoDetail(mTodoIndex);
+
+        CheckBox checkboxIsComplete = (CheckBox) findViewById(R.id.checkBoxIsComplete);
+        /* Register the onClick listener with the generic implementation mTodoListener */
+        checkboxIsComplete.setOnClickListener(mTodoListener);
+
+    }
 
     private void updateTextViewTodoDetail(int todoIndex) {
 
